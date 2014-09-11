@@ -17,17 +17,17 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');//设置模版引擎
 
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(partials());
+app.use(partials());       //express4.0不支持layout.ejs
 
-app.use(flash());
-app.use(session({
+app.use(flash());    
+app.use(session({           //session提供会话支持，存储会话信息到数据库中
 	secret: settings.cookieSecret,
 	store:new MongoStore({
 	    db:settings.db,	
@@ -36,8 +36,7 @@ app.use(session({
 	})
 }));
 
-app.use(function(req,res,next){
-
+app.use(function(req,res,next){   //为页面提供错误和成功信息的提示
    res.locals.user = req.session.user;
    res.locals.post = req.session.post;
    console.log(req.session.user);
@@ -48,10 +47,10 @@ app.use(function(req,res,next){
    next();
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));//静态路径
 
 
-app.use('/', routes);
+app.use('/', routes);  //路由
 
 app.use('/users', users);
 app.listen(3000);
