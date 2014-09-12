@@ -1,24 +1,16 @@
 
     <div class="jumbotron unit">
+	   <% if(!locals.user){ %>
 		    <h1>welcome to Microblog</h1>
 			<p>Microblog is a blog system based on Node.js</p>
 			<p>
 			    <a class="btn btn-primary btn-large" href="/login">Login</a>
 				<a class="btn btn-default btn-large" href="/reg">Register</a>
 			</p>
-		 </div>
-		 <div class="row"> 
-		    <div class="col-md-4">
-			    <h2>Carbo Say:</h2>
-				<p>Hi!Morning!</p>
-			</div>
-		    <div class="col-md-4">
-			    <h2>BYVoid Say:</h2>
-				<p>MicroBlog is a excellent system . we can share infomation here!</p>
-			</div>
-			 <div class="col-md-4">
-			    <h2>Jerry Say:</h2>
-				<p>Open source project is a good idea, we can learn more from it.</p>
-			</div>
-		 </div>
+		<% }else{ %>
+		    <% include say %>
+		 <% } %>  
+    </div>
+    <% include blogs %>
+
 

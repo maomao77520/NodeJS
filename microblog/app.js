@@ -29,6 +29,8 @@ app.use(partials());       //express4.0不支持layout.ejs
 app.use(flash());    
 app.use(session({           //session提供会话支持，存储会话信息到数据库中
 	secret: settings.cookieSecret,
+	resave:false,
+	saveUninitialized:false,
 	store:new MongoStore({
 	    db:settings.db,	
 		host:'localhost',
@@ -39,7 +41,6 @@ app.use(session({           //session提供会话支持，存储会话信息到数据库中
 app.use(function(req,res,next){   //为页面提供错误和成功信息的提示
    res.locals.user = req.session.user;
    res.locals.post = req.session.post;
-   console.log(req.session.user);
    var error = req.flash('error');
    res.locals.error = error.length?error:null;
    var success = req.flash('success');

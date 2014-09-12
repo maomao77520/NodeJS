@@ -12,7 +12,12 @@ User.prototype.save = function dave(callback){
 	      return callback(err);
 	   }					 
 	   db.collection('user',function(err,collection){
-		   collection.ensureIndex('name',{unique:true},function(err){});
+		   collection.ensureIndex('name',{unique:true},function(err){
+		   	if(err){
+		   	   mongodb.close();
+		   	   return callback(err);
+		   	} 
+		   });
 		   collection.insert(user,{safe:true},function(err,user){
 			  mongodb.close();
 			  callback(err,user);

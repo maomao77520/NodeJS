@@ -16,3 +16,9 @@ a {
    width:120px;
    color:#999999;
 }
+.btn-post{
+	float: right;
+	margin-top: 8px;
+	width: 100px;
+}
+.blogs-list{ margin-top: 50px;}
