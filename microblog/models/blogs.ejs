@@ -1,0 +1,15 @@
+<% locals.blogs.forEach(function(blog,index){
+	if( index % 3 == 0){ %>
+	   <div class="row">
+    <% } %>
+    <div class="span4">
+        <h2><a href="/u/<%= blog.username %>"><%= blog.username%></a>Say</h2>
+        <p><small><%= blog.text %></small></p>
+    </div>
+    <% if(index % 3 ==2){ %>
+       </div>
+    <% } %>   
+})%>
+ <% if(locals.blogs.length % 3 != 0){ %>
+    </div>
+ <% }%> 

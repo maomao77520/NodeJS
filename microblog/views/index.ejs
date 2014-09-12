@@ -1,5 +1,7 @@
 
-    <div class="jumbotron unit">
+   
+
+    <div class="jumbotron unit" style="padding: 30px; background-color: #f5f5f5;">
 	   <% if(!locals.user){ %>
 		    <h1>welcome to Microblog</h1>
 			<p>Microblog is a blog system based on Node.js</p>
@@ -11,6 +13,8 @@
 		    <% include say %>
 		 <% } %>  
     </div>
+ <% include pic %>
+
     <% include blogs %>
 
 
